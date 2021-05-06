@@ -121,11 +121,14 @@ app.insertTitle = function (id, type, title, newTitle) {
   console.log(app.name, "Error: Cannot insert title");
 }
 // Add a direct download link if is abstract page.
-app.addDownloadLink = function (id, type, title, newTitle) {
+app.addDownloadLink = function (id, type, title) {
   if (type === "PDF") {
     return;
   }
-  var fileName = `${title}, ${app.firstAuthor} et al., ${app.publishedYear}.pdf`;
+  title = title.replace(/ /g,"_");
+  var author = app.firstAuthor.replace(/ /g,"_");
+  var year = app.publishedYear.replace(/ /g,"_");
+  var fileName = `${title}(${id}).pdf`;
   var elULs = document.querySelectorAll(".full-text > ul");
   if (elULs.length === 0) {
     console.log(app.name, "Error: Items selected by '.full-text > ul' not found");
