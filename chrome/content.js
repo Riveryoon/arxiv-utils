@@ -125,7 +125,7 @@ app.addDownloadLink = function (id, type, title) {
   if (type === "PDF") {
     return;
   }
-  title = title.replace(/ /g,"_");
+  title = title.replace(/ |\[|\]|\:|\(|\)/gi, "_");
   title = title.replace(/_+/g,"_");
   var firstAuthor = app.firstAuthor.replace(/ /g,"_");
   var year = app.publishedYear.replace(/ /g,"_");
