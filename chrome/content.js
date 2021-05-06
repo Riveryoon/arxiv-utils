@@ -126,7 +126,8 @@ app.addDownloadLink = function (id, type, title) {
     return;
   }
   title = title.replace(/ /g,"_");
-  var author = app.firstAuthor.replace(/ /g,"_");
+  title = title.replace(/_+/g,"_");
+  var firstAuthor = app.firstAuthor.replace(/ /g,"_");
   var year = app.publishedYear.replace(/ /g,"_");
   var fileName = `${title}(${id}).pdf`;
   var elULs = document.querySelectorAll(".full-text > ul");
